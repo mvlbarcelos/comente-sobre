@@ -39,6 +39,24 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.1.5.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
@@ -48,6 +66,18 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 			<version>2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+		</dependency>
+
+		<dependency> <!-- needed to get AOPs around the test cases -->
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 
 
