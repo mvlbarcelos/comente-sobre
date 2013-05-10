@@ -1,5 +1,6 @@
 package com.mvlbarcelos.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,6 +14,7 @@ public class Comment {
 
 	private String title;
 
+	@Column(name="title_url")
 	private String titleUrl;
 	
 	private String comment;

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<comment id="1" title="test 1" comment="test of comment1" email="test1@comment.com" title_url="metodos-ageis" />
+	<comment id="2" title="test 2" comment="test of comment2" email="test2@comment.com" title_url="metodos-nao-ageis" />
+</dataset>
