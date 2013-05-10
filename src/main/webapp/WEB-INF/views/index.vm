@@ -1,0 +1,13 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Comente Sobre :</a>
+			<form method="post" id="formComment"class="form-horizontal" style="padding-top:5px;margin-bottom:0;">
+				<div class="input-append" style="margin-left: 10px">
+					<input class="span8" id="title" name="title" type="text">
+					<button class="btn" type="button" id="sendTitle">Comentar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
