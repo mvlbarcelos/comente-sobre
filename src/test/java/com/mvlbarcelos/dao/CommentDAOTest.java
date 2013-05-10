@@ -19,6 +19,7 @@ import com.mvlbarcelos.entity.Comment;
 public class CommentDAOTest {
 
 	private CommentDAO commentDAO;
+	private EntityManager em;
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -28,15 +29,34 @@ public class CommentDAOTest {
 	@Before
 	public void setUp() throws Exception {
 		new DBUnitHelper().cleanInsert("/comment/comments.xml");
-		EntityManager em = JPAHelper.currentEntityManager();
+		em = JPAHelper.currentEntityManager();
 		
 		commentDAO = new CommentDAO();
 		commentDAO.setEntityManager(em);
 	}
 	
 	@Test
-	public void shouldListComments() throws Exception {
-		List<Comment> comments = commentDAO.listComments("metodos-ageis");
+	public void shouldSaveComment() throws Exception {
+		Comment comment = new Comment();
+		comment.setId(999L);
+		comment.setComment("Comentario sobre metodos ageis");
+		comment.setEmail("teste@email.com");
+		comment.setTitle("MŽtodos çeis");
+		comment.setTitleUrl("metodo-ageis");
+
+		commentDAO.save(comment);
+		Comment commentFound = em.find(Comment.class, comment.getId());
+
+		assertThat(comment.getId(), is(commentFound.getId()));
+		assertThat(comment.getComment(), is(commentFound.getComment()));
+		assertThat(comment.getTitle(), is(commentFound.getTitle()));
+		assertThat(comment.getTitleUrl(), is(commentFound.getTitleUrl()));
+		assertThat(comment.getEmail(), is(commentFound.getEmail()));
+	}
+
+	@Test
+	public void shouldListCommentsByTitleUrl() throws Exception {
+		List<Comment> comments = commentDAO.listCommentsByTitleUr("metodos-ageis");
 		
 		assertThat(1, is(comments.size()));
 	}
@@ -45,6 +65,7 @@ public class CommentDAOTest {
 	public void tearDown() throws Exception {
 		JPAHelper.close();
 		new DBUnitHelper().deleteAll("/comment/comments.xml");
+		new DBUnitHelper().deleteAll("/comment/commentsFound.xml");
 	}
 
 }

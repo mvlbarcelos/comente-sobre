@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mvlbarcelos.entity.Comment;
 
@@ -19,11 +20,15 @@ public class CommentDAO {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
+
+	@Transactional
+	public void save(Comment comment) {
+		entityManager.persist(comment);
+	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Comment> listComments(String titleUrl) {
+	public List<Comment> listCommentsByTitleUr(String titleUrl) {
 		Query query = entityManager.createQuery("from Comment c where c.titleUrl = :titleUrl").setParameter("titleUrl", titleUrl);
-		
 		return query.getResultList();
 	}
 }
