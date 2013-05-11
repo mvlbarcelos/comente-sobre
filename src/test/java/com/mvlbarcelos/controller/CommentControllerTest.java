@@ -54,10 +54,11 @@ public class CommentControllerTest {
 		List<Comment> comments = getComments();
 		when(commentDAO.listCommentsByTitleUr(titleUrl)).thenReturn(comments );
 
-		ModelAndView modelAndView = commentController.save(titleUrl, "teste@teste,com", "metodos ageis", "metodos ágeis");
+		ModelAndView modelAndView = commentController.save(titleUrl, "teste@teste,com", "metodos ageis, qualidade de entrega", "métodos ágeis");
 
 		assertThat(modelAndView.getViewName(), is("list"));
 		assertThat(comments, is(modelAndView.getModelMap().get("comments")));
+		assertThat("métodos ágeis", is(modelAndView.getModelMap().get("title")));
 		verify(commentDAO).save(any(Comment.class));
 		verify(commentDAO).listCommentsByTitleUr(titleUrl);
 	}

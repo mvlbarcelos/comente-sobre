@@ -46,6 +46,7 @@ public class CommentController {
 
 		ModelAndView modelAndView = new ModelAndView("list");
 		modelAndView.addObject("comments", commentDAO.listCommentsByTitleUr(titleUrl));
+		modelAndView.addObject("title", title);
 
 		return modelAndView;
 	}
