@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Comente Sobre : $!{title}</a>
+		</div>
+	</div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Comentario</th>
+    </tr>
+  </thead>
+  <tbody>
+  	#foreach( $comment in $comments )
+    <tr>
+      <td>$!{comment.email}</td>
+      <td>$!{comment.comment}</td>
+    </tr>
+	#end
+    </tbody>
+</table>
