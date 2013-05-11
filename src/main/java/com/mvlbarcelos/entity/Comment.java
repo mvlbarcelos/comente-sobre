@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,8 @@ public class Comment implements Serializable {
 	private static final long serialVersionUID = -7484884974964871349L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "comment_seq_gen")
+	@SequenceGenerator(name="comment_seq_gen", sequenceName = "comment_seq")
 	private Long id;
 
 	private String title;

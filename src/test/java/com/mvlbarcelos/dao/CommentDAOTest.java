@@ -38,7 +38,6 @@ public class CommentDAOTest {
 	@Test
 	public void shouldSaveComment() throws Exception {
 		Comment comment = new Comment();
-		comment.setId(999L);
 		comment.setComment("Comentario sobre metodos ageis");
 		comment.setEmail("teste@email.com");
 		comment.setTitle("MŽtodos çeis");
