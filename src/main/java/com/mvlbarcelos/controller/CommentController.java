@@ -2,6 +2,7 @@ package com.mvlbarcelos.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,17 +37,13 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "salvar/{titleUrl}")
-	public ModelAndView save (@PathVariable("titleUrl") String titleUrl, String email, String comment, String title) {
-		Comment c = new Comment();
-		c.setTitleUrl(titleUrl);
-		c.setEmail(email);
-		c.setComment(comment);
-		c.setTitle(title);
+	public ModelAndView save (@PathVariable("titleUrl") String titleUrl, @ModelAttribute("c") Comment c) {
+
 		commentDAO.save(c);
 
 		ModelAndView modelAndView = new ModelAndView("list");
 		modelAndView.addObject("comments", commentDAO.listCommentsByTitleUr(titleUrl));
-		modelAndView.addObject("title", title);
+		modelAndView.addObject("title", c.getTitle());
 
 		return modelAndView;
 	}

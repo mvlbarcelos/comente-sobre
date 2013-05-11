@@ -51,10 +51,15 @@ public class CommentControllerTest {
 	@Test
 	public void shouldSaveCommentAndReturnComments() throws Exception {
 		String titleUrl = "metodo-ageis";
+		Comment c = new Comment();
+		c.setComment("metodos ageis, qualidade de entrega");
+		c.setEmail("teste@teste,com");
+		c.setTitle("métodos ágeis");
+
 		List<Comment> comments = getComments();
 		when(commentDAO.listCommentsByTitleUr(titleUrl)).thenReturn(comments );
 
-		ModelAndView modelAndView = commentController.save(titleUrl, "teste@teste,com", "metodos ageis, qualidade de entrega", "métodos ágeis");
+		ModelAndView modelAndView = commentController.save(titleUrl, c);
 
 		assertThat(modelAndView.getViewName(), is("list"));
 		assertThat(comments, is(modelAndView.getModelMap().get("comments")));
