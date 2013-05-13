@@ -40,7 +40,7 @@ public class CommentDAOTest {
 		Comment comment = new Comment();
 		comment.setComment("Comentario sobre metodos ageis");
 		comment.setEmail("teste@email.com");
-		comment.setTitle("Métodos Áeis");
+		comment.setTitle("M√©todos √Ågeis");
 		comment.setTitleUrl("metodo-ageis");
 
 		commentDAO.save(comment);

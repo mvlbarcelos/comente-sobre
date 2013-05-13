@@ -40,12 +40,12 @@ public class CommentControllerTest {
 	
 	@Test
 	public void shouldReturnComment() throws Exception {
-		ModelAndView modelAndView = commentController.createComment("metodo-ageis", "metodo Ágeis");
+		ModelAndView modelAndView = commentController.createComment("metodo-ageis", "m√©todo √Ågeis");
 		Comment comment = (Comment)modelAndView.getModelMap().get("comment");
 		
 		assertThat(modelAndView.getViewName(), is("detail"));
 		assertThat(comment.getTitleUrl(), is("metodo-ageis"));
-		assertThat(comment.getTitle(), is("metodo Ágeis"));
+		assertThat(comment.getTitle(), is("m√©todo √Ågeis"));
 	}
 
 	@Test
@@ -54,7 +54,7 @@ public class CommentControllerTest {
 		Comment c = new Comment();
 		c.setComment("metodos ageis, qualidade de entrega");
 		c.setEmail("teste@teste,com");
-		c.setTitle("métodos ágeis");
+		c.setTitle("m√©todos √Ågeis");
 
 		List<Comment> comments = getComments();
 		when(commentDAO.listCommentsByTitleUr(titleUrl)).thenReturn(comments );
@@ -63,7 +63,7 @@ public class CommentControllerTest {
 
 		assertThat(modelAndView.getViewName(), is("list"));
 		assertThat(comments, is(modelAndView.getModelMap().get("comments")));
-		assertThat("métodos ágeis", is(modelAndView.getModelMap().get("title")));
+		assertThat("m√©todos √Ågeis", is(modelAndView.getModelMap().get("title")));
 		verify(commentDAO).save(any(Comment.class));
 		verify(commentDAO).listCommentsByTitleUr(titleUrl);
 	}
